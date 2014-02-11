@@ -9,8 +9,7 @@ def default():
 
 @app.route("/open")
 def open():
-    open_door
-    return "Opened"
+    return open_door.open()
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=80)
