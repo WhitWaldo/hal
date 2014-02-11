@@ -30,7 +30,7 @@ void lockDoor() {
 }
 
 void setup() {
-  myServo.attach(9);
+  myServo.attach(8);
   pinMode(doorPin, OUTPUT);
   Serial.begin(9600);     // opens serial port, sets data rate to 9600 bps
 }
@@ -43,13 +43,14 @@ void loop() {
         // say what you got:
         Serial.print("I received: ");
         Serial.println(incomingByte, DEC);
-        switch (incomingByte) {
-            case DOOR_TRIGGER:
-                openDoor();
-            case UNLOCK_TRIGGER:
-                unlockDoor();
-            case LOCK_TRIGGER:
-                lockDoor();
+        if (incomingByte == DOOR_TRIGGER) {
+            openDoor();
+        }
+        if (incomingByte == LOCK_TRIGGER) {
+            lockDoor();
+        }
+        if (incomingByte == UNLOCK_TRIGGER) {
+            unlockDoor();
         }
     }
 }
