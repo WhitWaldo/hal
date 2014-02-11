@@ -1,0 +1,4 @@
+apache
+mod_wsgi2
+python2
+python2-pip
