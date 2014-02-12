@@ -3,7 +3,7 @@
 #define DOOR_TRIGGER 72
 #define UNLOCK_TRIGGER 73
 #define LOCK_TRIGGER 74
-#define ANGLE 90
+#define ANGLE 45
 int incomingByte = 0;   // for incoming serial data
 int doorPin = 13;
 Servo myServo;
@@ -16,17 +16,15 @@ void openDoor() {
 }
 
 void unlockDoor() {
-    for (pos = ANGLE; pos >= 1; pos -= 1) {
-        myServo.write(pos);
-        delay(15);
-    }
+     myServo.write(0);
+     delay(500);
+     myServo.write(90);
 }
 
 void lockDoor() {
-    for (pos = 0; pos < ANGLE; pos += 1) {
-        myServo.write(pos);
-        delay(15);
-    }
+     myServo.write(180);
+     delay(500);
+     myServo.write(90);
 }
 
 void setup() {
@@ -54,4 +52,3 @@ void loop() {
         }
     }
 }
-
