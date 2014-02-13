@@ -16,6 +16,25 @@ hex_commands = {
         "color": "\x20{0}\x55"
         }
 
+colors = {
+        "violet": "\x00",
+        "blue": "\x10",
+        "lightblue": "\x20",
+        "aqua": "\x30",
+        "mint": "\x40",
+        "lightgreen": "\x50",
+        "green": "\x60",
+        "lime": "\x70",
+        "yellow": "\x80",
+        "yelloworange": "\x90",
+        "orange": "\xA0",
+        "red": "\xB0",
+        "pink": "\xC0",
+        "fusia": "\xD0",
+        "lilac": "\xE0",
+        "lavendar": "\xF0"
+        }
+
 def change_function(command):
     hex_command = hex_commands.get(command)
     if hex_command is not None:
@@ -27,6 +46,17 @@ def change_function(command):
         elif command == "maxdim":
             for i in range(0,9):
                 send(hex_commands.get("dim"))
+    return "Success"
+
+def change_color(color):
+    hex_command = hex_commands.get("color")
+    if color in colors:
+        hex_color = color_map.get(color)
+    elif color.isdigit():
+        hex_color = chr(int(color))
+    else:
+        return "Invalid color"
+    send(hex_command.format(str(hex_color)))
     return "Success"
 
 def send(hex_command):
