@@ -28,4 +28,6 @@ def lights_change_color(color):
     return change_lights.change_color(color)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80)
+    app.run(host="0.0.0.0", port=80)
+    # dev settings
+    # app.run(host="0.0.0.0", port=8080, debug=True)
