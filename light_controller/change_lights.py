@@ -51,7 +51,7 @@ def change_function(command):
 def change_color(color):
     hex_command = hex_commands.get("color")
     if color in colors:
-        hex_color = color_map.get(color)
+        hex_color = colors.get(color)
     elif color.isdigit():
         hex_color = chr(int(color))
     else:
