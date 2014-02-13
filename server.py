@@ -1,12 +1,19 @@
 from flask import Flask
+from flask import render_template
+from flask import request
 from door_controller import open_door
 from light_controller import change_lights
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def default():
-    return "Doorman"
+    if request.method == "POST":
+        if request.form.get("lights") is not None:
+            change_lights.change_function(request.form["lights"])
+        elif request.form.get("door") == "open":
+            open_door.open()
+    return render_template("index.html")
 
 @app.route("/open")
 def open():
