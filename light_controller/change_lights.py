@@ -13,6 +13,7 @@ hex_commands = {
         "cooler": "\x3F\x00\x55",
         "full": "\xB5\x00\x55",
         "night": "\xB9\x00\x55",
+        "modedown": "\x28\x00\x55",
         "color": "\x20{0}\x55"
         }
 
@@ -49,14 +50,18 @@ def change_function(command):
     return "Success"
 
 def change_color(color):
-    hex_command = hex_commands.get("color")
-    if color in colors:
-        hex_color = colors.get(color)
-    elif color.isdigit():
-        hex_color = chr(int(color))
+    if color == "white":
+        for i in range(0,19):
+            send(hex_commands.get("modedown"))
     else:
-        return "Invalid color"
-    send(hex_command.format(str(hex_color)))
+        hex_command = hex_commands.get("color")
+        if color in colors:
+            hex_color = colors.get(color)
+        elif color.isdigit():
+            hex_color = chr(int(color))
+        else:
+            return "Invalid color"
+        send(hex_command.format(str(hex_color)))
     return "Success"
 
 def send(hex_command):
