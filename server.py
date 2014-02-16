@@ -6,13 +6,14 @@ from light_controller import change_lights
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def default():
-    if request.method == "POST":
-        if request.form.get("lights") is not None:
-            change_lights.change_function(request.form["lights"])
-        elif request.form.get("door") == "open":
-            open_door.open()
+    if request.form.get("lights") is not None:
+        change_lights.change_function(request.form.get("lights"))
+    elif request.form.get("color") is not None:
+        change_light.change_color(request.form.get("color"))
+    elif request.form.get("door") == "open":
+        open_door.open()
     return render_template("index.html")
 
 @app.route("/open")
