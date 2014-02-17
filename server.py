@@ -9,11 +9,11 @@ app = Flask(__name__)
 @app.route("/")
 def default():
     if request.form.get("lights") is not None:
-        change_lights.change_function(request.form.get("lights"))
+        lights_change_function(request.form.get("lights"))
     elif request.form.get("color") is not None:
-        change_light.change_color(request.form.get("color"))
+        lights_change_color(request.form.get("color"))
     elif request.form.get("door") == "open":
-        open_door.open()
+        open()
     return render_template("index.html")
 
 @app.route("/open")
