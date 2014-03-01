@@ -6,47 +6,53 @@
       <link rel="stylesheet" type="text/css" href="../web/bower_components/font-awesome/css/font-awesome.css">
   </head>
   <body>
-    <h1>Doorman</h1>
-    <h3>Door</h3>
-    <form>
-      <div>
-        <input type="submit" name="door" value="open">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <h1>Doorman</h1>
+        <h3>Door</h3>
+        <form>
+          <div >
+            <input class="btn btn-lg btn-default" type="submit" name="door" value="open">
+          </div>
+          <div >
+            <input class="btn btn-lg btn-default" type="submit" name="door" value="buzz">
+          </div>
+          <div>
+            <input class="btn btn-lg btn-default" type="submit" name="door" value="lock">
+            <input class="btn btn-lg btn-default" type="submit" name="door" value="unlock">
+          </div>
+        </form>
+        <h3>Lights</h3>
+        <form>
+          <div>
+            <input class="btn btn-lg btn-default" type="submit" name="lights" value="on">
+            <input class="btn btn-lg btn-default" type="submit" name="lights" value="off">
+          </div>
+        </form>
+        <form>
+          <select class="form-control"  name="color" onchange="this.form.submit()">
+            <option value="" selected="selected">Color</option>
+            <option value="white">White</option>
+            <option value="violet">Violet</option>
+            <option value="blue">Blue</option>
+            <option value="lightblue">Light Blue</option>
+            <option value="aqua">Aqua</option>
+            <option value="mint">Mint</option>
+            <option value="lightgreen">Light Green</option>
+            <option value="green">Green</option>
+            <option value="lime">Lime</option>
+            <option value="yellow">Yellow</option>
+            <option value="yelloworange">Yellow Orange</option>
+            <option value="orange">Orange</option>
+            <option value="red">Red</option>
+            <option value="pink">Pink</option>
+            <option value="fusia">Fusia</option>
+            <option value="lilac">Lilac</option>
+            <option value="lavendar">Lavendar</option>
+          </select>
+        </form>
       </div>
-      <div>
-        <input type="submit" name="door" value="buzz">
-      </div>
-      <div>
-        <input type="submit" name="door" value="lock">
-        <input type="submit" name="door" value="unlock">
-      </div>
-    </form>
-    <h3>Lights</h3>
-    <form>
-      <input type="submit" name="lights" value="on">
-      <input type="submit" name="lights" value="off">
-    </form>
-    <form>
-      <select name="color" onchange="this.form.submit()">
-        <option value="" selected="selected">Color</option>
-        <option value="white">White</option>
-        <option value="violet">Violet</option>
-        <option value="blue">Blue</option>
-        <option value="lightblue">Light Blue</option>
-        <option value="aqua">Aqua</option>
-        <option value="mint">Mint</option>
-        <option value="lightgreen">Light Green</option>
-        <option value="green">Green</option>
-        <option value="lime">Lime</option>
-        <option value="yellow">Yellow</option>
-        <option value="yelloworange">Yellow Orange</option>
-        <option value="orange">Orange</option>
-        <option value="red">Red</option>
-        <option value="pink">Pink</option>
-        <option value="fusia">Fusia</option>
-        <option value="lilac">Lilac</option>
-        <option value="lavendar">Lavendar</option>
-      </select>
-  </form>
+    </div>
   <!--Le Javascripts-->
   <script type="application/javascript" src="../web/bower_components/jquery/dist/jquery.js"></script>
   <script type="application/javascript" src="../web/bower_components/underscore/underscore.js"></script>
