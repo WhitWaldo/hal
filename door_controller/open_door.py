@@ -1,14 +1,24 @@
 import sys,serial
 
-def open():
+#ARDUINO_LOCATION =  "/dev/ttyACM0"
+#BAUD_RATE = 9600
+#ser = serial.Serial(ARDUINO_LOCATION,BAUD_RATE)
+
+def send(char):
     try:
-        ARDUINO_LOCATION =  "/dev/ttyACM0"
-        BAUD_RATE = 9600
-        ser = serial.Serial(ARDUINO_LOCATION,BAUD_RATE)
-        # This is totally abritrary but the serial listener on the arduino
-        # is listening for an "H" or the ASCII value 97 for it to trigger
-        # the open command
-        ser.write("H")
-        return "Opened"
+        # char is an arbitrary letter code sent to the arduino
+        ser.write(char)
     except:
         return "Unexpected error:", sys.exc_info()[0]
+
+def buzz():
+    send("H")
+    return "Buzzed"
+
+def unlock():
+    send("J")
+    return "Unlocked"
+
+def lock():
+    send("I")
+    return "Locked"
