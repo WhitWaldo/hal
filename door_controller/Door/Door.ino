@@ -3,7 +3,8 @@
 #define DOOR_TRIGGER 72
 #define UNLOCK_TRIGGER 73
 #define LOCK_TRIGGER 74
-#define ANGLE 45
+#define FINAL_POSITION 130
+#define MOTOR_DELAY 5
 int incomingByte = 0;   // for incoming serial data
 int doorPin = 13;
 Servo myServo;
@@ -16,15 +17,32 @@ void openDoor() {
 }
 
 void unlockDoor() {
-     myServo.write(0);
-     delay(500);
-     myServo.write(90);
+  Serial.print("\nPosition: ");
+  Serial.println(pos, DEC);
+  if (pos == 0) {
+    for(pos = 0; pos < FINAL_POSITION; pos += 1)  // goes from 0 degrees to 180 degrees 
+    {                                  // in steps of 1 degree 
+      myServo.write(pos);              // tell servo to go to position in variable 'pos' 
+      delay(MOTOR_DELAY);
+     // waits 15ms for the servo to reach the position 
+    }
+    delay(10);
+    myServo.write(pos-10); 
+  }
 }
 
 void lockDoor() {
-     myServo.write(180);
-     delay(500);
-     myServo.write(90);
+  Serial.print("\nPosition: ");
+  Serial.println(pos, DEC);
+  if (pos == FINAL_POSITION) {
+    for(pos = FINAL_POSITION; pos>=1; pos-=1)     // goes from 180 degrees to 0 degrees 
+    {                                
+      myServo.write(pos);              // tell servo to go to position in variable 'pos' 
+      delay(MOTOR_DELAY);                       // waits 15ms for the servo to reach the position 
+    }
+    delay(10);
+    myServo.write(pos+10); 
+  } 
 }
 
 void setup() {
