@@ -5,7 +5,9 @@
 * Install python dependencies
   *  `pip2 install -r dependencies/requirements.txt`
 * Configure apache (or other webserver) to use wsgi script
+
 ## Frontend
+
 * Setup Node
   * Install it for the platform you're using if you don't already have it.
   * package.json contains the node dependencies we're using. To install all of them at once, simply execute `npm install` in the same directory as package.json
@@ -18,6 +20,7 @@
   * This is all configured in Gruntfile.js
   * We're using SASS, and using compass to compile it to CSS.
   * We're using JST to keep our html templates/fragments organized and compiled into a singular JS object. It's directories and behaviors are also found in Gruntfile.js
+
 ## NOTE: Keep generated files out of VCS. template.js, CSS, and the directories that bower creates `web/bower_components` should be generated on each system via the `grunt build` and `bower install` commands.
 
 
