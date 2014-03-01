@@ -8,18 +8,19 @@ app = Flask(__name__)
 
 @app.route("/")
 def default():
-    if request.form.get("door") == "open":
+    print(request.args)
+    if request.args.get("door") == "open":
         open()
-    elif request.form.get("door") == "buzz":
+    elif request.args.get("door") == "buzz":
         buzz()
-    elif request.form.get("door") == "unlock":
+    elif request.args.get("door") == "unlock":
         unlock()
-    elif request.form.get("door") == "lock":
+    elif request.args.get("door") == "lock":
         lock()
-    elif request.form.get("lights") is not None:
-        lights_change_function(request.form.get("lights"))
-    elif request.form.get("color") is not None:
-        lights_change_color(request.form.get("color"))
+    elif request.args.get("lights") is not None:
+        lights_change_function(request.args.get("lights"))
+    elif request.args.get("color") is not None:
+        lights_change_color(request.args.get("color"))
 
     return render_template("index.html")
 
