@@ -1,0 +1,23 @@
+{
+  "name": "Home_Automation",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Daniel0524/Home_Automation",
+  "authors": [
+    "Daniel Nordness <Daniel0524@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone" : "latest",
+    "jquery" : "latest",
+    "bootstrap" : "latest",
+    "underscore" : "latest",
+    "font-awesome" : "latest"
+  }
+}

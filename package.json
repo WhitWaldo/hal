@@ -1,0 +1,7 @@
+{
+    "name" : "nordness.net",
+    "author" : "Daniel Nordness",
+    "devDependencies" : {
+        "bower" : "latest"
+    }
+}
