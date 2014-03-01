@@ -44,6 +44,6 @@ grunt.loadNpmTasks('grunt-contrib-compass');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-jst');
 // Register the default tasks.
-grunt.registerTask('build',['compass']);
+grunt.registerTask('build',['compass','JST']);
 grunt.registerTask('default', ['watch']);
 };
