@@ -1,6 +1,11 @@
 proj/__pycache__/*
 *.pyc
+#SASS
+.sass-cache/
+web/css/main.css
 #NODE
 node_modules/
 #BOWER
 web/bower_components/*
+#JST
+web/js/template.js

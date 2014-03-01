@@ -2,6 +2,10 @@
     "name" : "nordness.net",
     "author" : "Daniel Nordness",
     "devDependencies" : {
+        "grunt" : "latest",
+        "grunt-contrib-watch" : "latest",
+        "grunt-contrib-compass" : "latest",
+        "grunt-contrib-jst" : "latest",
         "bower" : "latest"
     }
 }
