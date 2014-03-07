@@ -7,6 +7,8 @@
 #define MOTOR_DELAY 5
 int incomingByte = 0;   // for incoming serial data
 int doorPin = 13;
+int openButtonPin = 12;
+int closeButtonPin = 11;
 Servo myServo;
 int pos = 0;
 
@@ -68,5 +70,12 @@ void loop() {
         if (incomingByte == UNLOCK_TRIGGER) {
             unlockDoor();
         }
+        if (digitalRead(openButtonPin) == HIGH) {
+            unlockDoor(); 
+        }
+        if (digitalRead(closeButtonPin) == HIGH) {
+            lockDoor(); 
+        }
+        
     }
 }
