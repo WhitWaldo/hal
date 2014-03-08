@@ -5,6 +5,23 @@ from door_controller import open_door
 from light_controller import change_lights
 
 app = Flask(__name__)
+@app.route("/new")
+def default():
+    print(request.args)
+    if request.args.get("door") == "open":
+        open()
+    elif request.args.get("door") == "buzz":
+        buzz()
+    elif request.args.get("door") == "unlock":
+        unlock()
+    elif request.args.get("door") == "lock":
+        lock()
+    elif request.args.get("lights") is not None:
+        lights_change_function(request.args.get("lights"))
+    elif request.args.get("color") is not None:
+        lights_change_color(request.args.get("color"))
+
+    return render_template("new/index.html")
 
 @app.route("/")
 def default():
