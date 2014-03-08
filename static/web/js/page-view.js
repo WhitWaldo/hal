@@ -17,18 +17,18 @@ page_view = Backbone.View.extend({
     },
 
     buzzDoor: function() {
-        alert("buzzDoor");
+        this.model.do("door=open");
     },
 
     lockDoor: function() {
-        alert("lockDoor");
+        this.model.do("door=lock");
     },
 
     unlockDoor: function() {
-        alert("unlockDoor");
+        this.model.do("door=unlock");
     },
 
     lightsPage: function() {
-        alert("lightsPage");
+        this.model.do("lights=off");
     }
 });
