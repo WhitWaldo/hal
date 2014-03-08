@@ -1,3 +1,7 @@
 @import "compass";
 @import "_color-row";
 @import "_navbar";
+
+body {
+    background-color: $color1;
+}

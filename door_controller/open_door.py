@@ -5,7 +5,7 @@ BAUD_RATE = 9600
 # ser = serial.Serial(ARDUINO_LOCATION,BAUD_RATE)
 
 def send(char):
-    print "sending " + char
+    print "sending" + char
     # try:
         # char is an arbitrarily defined etter code sent to the arduino
         # ser.write(char)
