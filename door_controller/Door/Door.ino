@@ -6,11 +6,13 @@
 #define FINAL_POSITION 130
 #define MOTOR_DELAY 5
 int incomingByte = 0;   // for incoming serial data
-int doorPin = 13;
-int openButtonPin = 12;
-int closeButtonPin = 11;
+const int doorPin = 13;
+const int openButtonPin = 10;
+const int closeButtonPin = 6;
 Servo myServo;
 int pos = 0;
+int openButtonState = 0;
+int closeButtonState = 0;
 
 void openDoor() {
   digitalWrite(doorPin, HIGH);
@@ -50,6 +52,8 @@ void lockDoor() {
 void setup() {
   myServo.attach(8);
   pinMode(doorPin, OUTPUT);
+  pinMode(openButtonPin, INPUT);
+  pinMode(closeButtonPin, INPUT);
   Serial.begin(9600);     // opens serial port, sets data rate to 9600 bps
 }
 
@@ -70,12 +74,16 @@ void loop() {
         if (incomingByte == UNLOCK_TRIGGER) {
             unlockDoor();
         }
-        if (digitalRead(openButtonPin) == HIGH) {
-            unlockDoor(); 
-        }
-        if (digitalRead(closeButtonPin) == HIGH) {
-            lockDoor(); 
-        }
         
+    }
+    openButtonState = digitalRead(openButtonPin);
+    if (openButtonState == HIGH) {
+        Serial.print("\nopen button: ");
+      unlockDoor(); 
+    }
+    closeButtonState = digitalRead(closeButtonPin);
+    if (digitalRead(closeButtonPin) == HIGH) {
+      Serial.print("\nclose button: ");
+      lockDoor(); 
     }
 }
