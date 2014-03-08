@@ -20,8 +20,3 @@
   * This is all configured in Gruntfile.js
   * We're using SASS, and using compass to compile it to CSS.
   * We're using JST to keep our html templates/fragments organized and compiled into a singular JS object. It's directories and behaviors are also found in Gruntfile.js
-
-## NOTE:
-* Keep generated files out of VCS. template.js, CSS, and the directories that bower creates `web/bower_components` should be generated on each system via the `grunt build` and `bower install` commands.
-
-
