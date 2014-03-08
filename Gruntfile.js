@@ -6,7 +6,7 @@ grunt.initConfig({
     watch: {
         html: {
             files: [
-                'web/templates/*.html'
+                'static/web/templates/*.html'
             ],
             tasks: ['jst']
         },
@@ -21,8 +21,8 @@ grunt.initConfig({
     compass: {
         dist: {
             options: {
-                sassDir: 'web/sass',
-                cssDir:  'web/css',
+                sassDir: 'static/web/sass',
+                cssDir:  'static/web/css',
                 outputStyle: 'compressed'
             }
         }
@@ -33,7 +33,7 @@ grunt.initConfig({
                 templateSettings: {}
             },
             files: {
-                "web/js/template.js" : ["web/templates/*.html"]
+                "static/web/js/template.js" : ["static/web/templates/*.html"]
             }
         }
     }
@@ -44,6 +44,6 @@ grunt.loadNpmTasks('grunt-contrib-compass');
 grunt.loadNpmTasks('grunt-contrib-watch');
 grunt.loadNpmTasks('grunt-contrib-jst');
 // Register the default tasks.
-grunt.registerTask('build',['compass','JST']);
+grunt.registerTask('build',['compass','jst']);
 grunt.registerTask('default', ['watch']);
 };
