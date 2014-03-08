@@ -1,7 +1,10 @@
 .color-row {
-    height: 20em;
+    height: 15em;
     text-align: center;
-    padding: 8em;
+    i {
+    	color: $iconColor;
+    	padding-top:1em;
+    }
 }
 
 .color-row-1 {
@@ -14,4 +17,8 @@
 
 .color-row-3 {
     background-color: $color3;
+}
+
+.color-row-4 {
+	background-color: $color4;
 }

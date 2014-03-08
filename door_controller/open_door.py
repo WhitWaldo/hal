@@ -6,7 +6,7 @@ ser = serial.Serial(ARDUINO_LOCATION,BAUD_RATE)
 
 def send(char):
     try:
-        # char is an arbitrary letter code sent to the arduino
+        # char is an arbitrarily defined etter code sent to the arduino
         ser.write(char)
     except:
         return "Unexpected error:", sys.exc_info()[0]
