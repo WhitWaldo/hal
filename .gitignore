@@ -5,6 +5,9 @@ proj/__pycache__/*
 #NODE
 node_modules/
 #BOWER
+#We're actually putting these in source now so it's easier to deploy
 #web/bower_components/*
 #JST
 web/js/template.js
+#PyCharm
+.idea/

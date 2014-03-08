@@ -18,6 +18,7 @@
     "jquery" : "latest",
     "bootstrap" : "latest",
     "underscore" : "latest",
-    "font-awesome" : "latest"
+    "font-awesome" : "latest",
+    "normalize-css" : "latest"
   }
 }

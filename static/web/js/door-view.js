@@ -1,19 +1,22 @@
-page_view = Backbone.View.extend({
+door_view = Backbone.View.extend({
     el: "#main",
 
     events: {
         "click .do-buzz-door" : "buzzDoor",
         "click .do-lock-door" : "lockDoor",
         "click .do-unlock-door" : "unlockDoor",
-        "click .do-lights-page" : "lightsPage"
+        "click .do-lights-page" : "renderLightsPage"
     },
     
-    initialize: function() {
+    template: JST["static/web/templates/door.html"],
 
+    initialize: function() {
+        
     },
 
     render: function() {
-        
+        this.$el.html(this.template());
+        return;
     },
 
     buzzDoor: function() {
@@ -28,7 +31,11 @@ page_view = Backbone.View.extend({
         this.model.do("door=unlock");
     },
 
-    lightsPage: function() {
-        this.model.do("lights=off");
-    }
+    renderLightsPage: function() {
+        var lightsPage = new lights_view({
+            model: this.model
+        });
+        this.undelegateEvents();
+        lightsPage.render();
+    },
 });

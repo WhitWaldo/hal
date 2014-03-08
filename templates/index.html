@@ -2,61 +2,67 @@
 <html>
   <head>
       <title>Doorman</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <link rel="stylesheet" type="text/css" href="../static/web/bower_components/bootstrap/dist/css/bootstrap.css">
       <link rel="stylesheet" type="text/css" href="../static/web/bower_components/font-awesome/css/font-awesome.css">
+      <link rel="stylesheet" type="text/css" href="../static/web/css/main.css">
+      <link rel="stylesheet" type="text/css" href="../static/web/bower_components/normalize-css/normalize.css">
   </head>
   <body>
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <h1>Doorman</h1>
-        <h3>Door</h3>
-        <form>
-          <div >
-            <input class="btn btn-lg btn-default" type="submit" name="door" value="open">
+    <div class="container-fluid">
+      <div id="main">
+        <nav class="navbar navbar-translucent navbar-default navbar-fixed-top" role="navigation">
+          <div class="container-fluid">
+            <a class="do-lights-page">
+              <div class="navbar-icon-box">
+                <i class="fa fa-2x fa-lightbulb-o navbar-icon"></i>
+              </div>
+            </a>
           </div>
-          <div >
-            <input class="btn btn-lg btn-default" type="submit" name="door" value="buzz">
-          </div>
-          <div>
-            <input class="btn btn-lg btn-default" type="submit" name="door" value="lock">
-            <input class="btn btn-lg btn-default" type="submit" name="door" value="unlock">
-          </div>
-        </form>
-        <h3>Lights</h3>
-        <form>
-          <div>
-            <input class="btn btn-lg btn-default" type="submit" name="lights" value="on">
-            <input class="btn btn-lg btn-default" type="submit" name="lights" value="off">
-          </div>
-        </form>
-        <form>
-          <select class="form-control"  name="color" onchange="this.form.submit()">
-            <option value="" selected="selected">Color</option>
-            <option value="white">White</option>
-            <option value="violet">Violet</option>
-            <option value="blue">Blue</option>
-            <option value="lightblue">Light Blue</option>
-            <option value="aqua">Aqua</option>
-            <option value="mint">Mint</option>
-            <option value="lightgreen">Light Green</option>
-            <option value="green">Green</option>
-            <option value="lime">Lime</option>
-            <option value="yellow">Yellow</option>
-            <option value="yelloworange">Yellow Orange</option>
-            <option value="orange">Orange</option>
-            <option value="red">Red</option>
-            <option value="pink">Pink</option>
-            <option value="fusia">Fusia</option>
-            <option value="lilac">Lilac</option>
-            <option value="lavendar">Lavendar</option>
-          </select>
-        </form>
+        </nav>
+        <div class="row">
+          <a class="do-buzz-door"> 
+            <div class="col-md-12 color-row color-row-1">
+                <i class="fa fa-5x fa-building-o"></i>
+            </div>
+          </a>
+        </div>
+        <div class="row last-row">
+          <a class="do-unlock-door">
+            <div class="col-md-6 color-row color-row-2">
+              <i class="fa fa-5x fa-unlock-alt"></i>
+            </div>
+          </a>
+          <a class="do-lock-door">
+            <div class="col-md-6 color-row color-row-3">
+                <i class="fa fa-5x fa-lock"></i>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
-  <!--Le Javascripts-->
-  <script type="application/javascript" src="../static/web/bower_components/jquery/dist/jquery.js"></script>
-  <script type="application/javascript" src="../static/web/bower_components/underscore/underscore.js"></script>
-  <script type="application/javascript" src="../static/web/bower_components/backbone/backbone.js"></script>
-  <script type="application/javascript" src="../static/web/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <div class="container-fluid">
+      <div class="row">
+        <a href="https://github.com/Daniel0524/Home_Automation">
+          <div class="col-md-12 color-row color-row-2">
+            <i class="fa fa-5x fa-github"></i>
+          </div>
+        </a>
+      </div>
+    </div>
+      <!--Le Javascripts-->
+      <script type="application/javascript" src="../static/web/bower_components/jquery/dist/jquery.js"></script>
+      <script type="application/javascript" src="../static/web/bower_components/underscore/underscore.js"></script>
+      <script type="application/javascript" src="../static/web/bower_components/backbone/backbone.js"></script>
+      <script type="application/javascript" src="../static/web/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+      <script type="application/javascript" src="../static/web/bower_components/bootstrap/js/transition.js"></script>
+      <script type="application/javascript" src="../static/web/js/template.js"></script>
+      <script type="application/javascript" src="../static/web/js/action-model.js"></script>
+      <script type="application/javascript" src="../static/web/js/door-view.js"></script>
+      <script type="application/javascript" src="../static/web/js/color-view.js"></script>
+      <script type="application/javascript" src="../static/web/js/lights-view.js"></script>
+      <script type="application/javascript" src="../static/web/js/start.js"></script>
   </body>
 </html>

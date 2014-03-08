@@ -1,0 +1,24 @@
+$navbarIconBoxSize: 3em;
+$navbarIconBoxOpacity: .3;
+$navbarIconBoxRightMargin: -1.1em;
+
+.navbar-translucent {
+    background-color: transparent;
+    border: none;
+}
+
+.navbar-icon {
+    color: $iconColor;
+}
+
+.navbar-icon-box {
+    float: right;
+    background-color: $navbarIconBoxColor;
+    opacity: $navbarIconBoxOpacity;
+    width: $navbarIconBoxSize;
+    height: $navbarIconBoxSize;
+    text-align: center;
+    padding: .5em;
+    margin-right: $navbarIconBoxRightMargin;
+
+}
