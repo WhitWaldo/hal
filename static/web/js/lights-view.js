@@ -2,8 +2,8 @@ lights_view = Backbone.View.extend({
     el: "#main",
 
     events: {
-        "click .do-lights-off" : "lightsOn",
-        "click .do-lights-on" : "lightsOff",
+        "click .do-lights-off" : "lightsOff",
+        "click .do-lights-on" : "lightsOn",
         "click .do-lights-color" : "lightsColor",
         "click .do-show-colors" : "showColors",
         "click .do-door-page" : "renderDoorPage"
