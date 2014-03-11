@@ -47,6 +47,8 @@ def lights_change_color(color):
     return change_lights.change_color(color)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=80)
-    # dev settings
-    # app.run(host="0.0.0.0", port=8083, debug=True)
+    if app.debug:
+        app.config["SERVER_NAME"] = "localhost:8083"
+    else:
+        app.config["SERVER_NAME"] = "localhost:80"
+    app.run()
