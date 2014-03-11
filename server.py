@@ -7,9 +7,8 @@ from light_controller import change_lights
 app = Flask(__name__)
 @app.route("/")
 def default():
-    print(request.args)
     if request.args.get("door") == "open":
-        open()
+        open_doors()
     elif request.args.get("door") == "buzz":
         buzz()
     elif request.args.get("door") == "unlock":
@@ -24,7 +23,7 @@ def default():
     return render_template("index.html")
 
 @app.route("/door/open")
-def open():
+def open_doors():
     return open_door.buzz() + " and " + open_door.unlock()
 
 @app.route("/door/buzz")
