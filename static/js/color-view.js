@@ -4,7 +4,6 @@ color_view = Backbone.View.extend({
     template: JST["static/templates/colors.html"],
 
     initialize: function() {
-    
     },
 
     render: function(color) {

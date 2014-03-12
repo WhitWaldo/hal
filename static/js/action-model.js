@@ -4,7 +4,7 @@ action_model = Backbone.Model.extend({
     },
 
     do: function(action) {
-    	console.log("Performing: " + action);
+        console.log("Performing: " + action);
         $.ajax({
             url: "?" + action
         });
