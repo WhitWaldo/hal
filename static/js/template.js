@@ -1,6 +1,6 @@
 this["JST"] = this["JST"] || {};
 
-this["JST"]["static/web/templates/colors.html"] = function(obj) {
+this["JST"]["static/templates/colors.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -10,7 +10,7 @@ __p += '<div class="col-md-12 color-item">\n</div12';
 return __p
 };
 
-this["JST"]["static/web/templates/door.html"] = function(obj) {
+this["JST"]["static/templates/door.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
@@ -20,7 +20,7 @@ __p += '<nav class="navbar navbar-translucent navbar-default navbar-fixed-top" r
 return __p
 };
 
-this["JST"]["static/web/templates/lights.html"] = function(obj) {
+this["JST"]["static/templates/lights.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {

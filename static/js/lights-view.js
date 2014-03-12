@@ -9,7 +9,7 @@ lights_view = Backbone.View.extend({
         "click .do-door-page" : "renderDoorPage"
     },
     
-    template: JST["static/web/templates/lights.html"],
+    template: JST["static/templates/lights.html"],
 
     initialize: function() {
         this.colors = ["white", "violet", "blue", "lightblue", "aqua", "lightgreen", "green", "lime", "yellow", "orange", "red", "pink"];

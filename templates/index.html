@@ -6,12 +6,12 @@
 
 {% block js %}
   {{ super() }}
-  <script type="application/javascript" src="../static/web/js/template.js"></script>
-  <script type="application/javascript" src="../static/web/js/action-model.js"></script>
-  <script type="application/javascript" src="../static/web/js/door-view.js"></script>
-  <script type="application/javascript" src="../static/web/js/color-view.js"></script>
-  <script type="application/javascript" src="../static/web/js/lights-view.js"></script>
-  <script type="application/javascript" src="../static/web/js/start.js"></script>
+  <script type="application/javascript" src="{{ url_for('static', filename='js/template.js') }}"></script>
+  <script type="application/javascript" src="{{ url_for('static', filename='js/action-model.js') }}"></script>
+  <script type="application/javascript" src="{{ url_for('static', filename='js/door-view.js') }}"></script>
+  <script type="application/javascript" src="{{ url_for('static', filename='js/color-view.js') }}"></script>
+  <script type="application/javascript" src="{{ url_for('static', filename='js/lights-view.js') }}"></script>
+  <script type="application/javascript" src="{{ url_for('static', filename='js/start.js') }}"></script>
 {% endblock %}
 
 {% block body %}

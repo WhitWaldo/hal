@@ -8,7 +8,7 @@ door_view = Backbone.View.extend({
         "click .do-lights-page" : "renderLightsPage"
     },
     
-    template: JST["static/web/templates/door.html"],
+    template: JST["static/templates/door.html"],
 
     initialize: function() {
         
