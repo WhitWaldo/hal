@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+      <title>Doorman - {% block title %}{% endblock %}</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <link rel="stylesheet" type="text/css" href="../static/web/bower_components/bootstrap/dist/css/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="../static/web/bower_components/font-awesome/css/font-awesome.css">
+      <link rel="stylesheet" type="text/css" href="../static/web/css/main.css">
+      <link rel="stylesheet" type="text/css" href="../static/web/bower_components/normalize-css/normalize.css">
+    {% endblock %}
+  </head>
+  <body>
+    {% block body %}
+    {% endblock %}
+    {% block js %}
+      <script type="application/javascript" src="../static/web/bower_components/jquery/dist/jquery.js"></script>
+      <script type="application/javascript" src="../static/web/bower_components/underscore/underscore.js"></script>
+      <script type="application/javascript" src="../static/web/bower_components/backbone/backbone.js"></script>
+      <script type="application/javascript" src="../static/web/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+      <script type="application/javascript" src="../static/web/bower_components/bootstrap/js/transition.js"></script>
+    {% endblock %}
+   </body>
+</html>
