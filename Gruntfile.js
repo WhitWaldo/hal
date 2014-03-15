@@ -6,7 +6,7 @@ grunt.initConfig({
     watch: {
         html: {
             files: [
-                'static/web/templates/*.html'
+                'static/templates/*.html'
             ],
             tasks: ['jst']
         },
@@ -21,8 +21,8 @@ grunt.initConfig({
     compass: {
         dist: {
             options: {
-                sassDir: 'static/web/sass',
-                cssDir:  'static/web/css',
+                sassDir: 'static/sass',
+                cssDir:  'static/css',
                 outputStyle: 'compressed'
             }
         }
@@ -33,7 +33,7 @@ grunt.initConfig({
                 templateSettings: {}
             },
             files: {
-                "static/web/js/template.js" : ["static/web/templates/*.html"]
+                "static/js/template.js" : ["static/templates/*.html"]
             }
         }
     }

@@ -7,11 +7,10 @@ door_view = Backbone.View.extend({
         "click .do-unlock-door" : "unlockDoor",
         "click .do-lights-page" : "renderLightsPage"
     },
-    
-    template: JST["static/web/templates/door.html"],
+
+    template: JST["static/templates/door.html"],
 
     initialize: function() {
-        
     },
 
     render: function() {

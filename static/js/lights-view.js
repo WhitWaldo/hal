@@ -8,8 +8,8 @@ lights_view = Backbone.View.extend({
         "click .do-show-colors" : "showColors",
         "click .do-door-page" : "renderDoorPage"
     },
-    
-    template: JST["static/web/templates/lights.html"],
+
+    template: JST["static/templates/lights.html"],
 
     initialize: function() {
         this.colors = ["white", "violet", "blue", "lightblue", "aqua", "lightgreen", "green", "lime", "yellow", "orange", "red", "pink"];
@@ -17,11 +17,11 @@ lights_view = Backbone.View.extend({
 
     render: function() {
         this.$el.html(this.template());
-        
+
         _.each(this.colors, function(color) {
             this.addColor(color);
         }, this);
-        
+
         return;
     },
 
