@@ -1,6 +1,9 @@
 # Site
 ![](images/preview_1.png?raw=true)
 ![](images/preview_2.png?raw=true)
+#Circuit
+![](door_controller/Door/design.png?raw=true)
+![](door_controller/Door/circuit.png?raw=true)
 # Setup
 ## Backend
 * Install package dependencies
