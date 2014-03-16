@@ -6,3 +6,5 @@ proj/__pycache__/*
 node_modules/
 #PyCharm
 .idea/
+#Windows
+Thumbs.db
