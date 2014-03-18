@@ -5,22 +5,37 @@
 #define LOCK_TRIGGER 74
 #define FINAL_POSITION 130
 #define MOTOR_DELAY 5
+
+#define LED_PIN 4
+#define MOTOR_PIN 8
+#define DOOR_PIN 13
+#define OPEN_BUTTON_PIN 10
+#define CLOSE_BUTTON_PIN 6
 int incomingByte = 0;   // for incoming serial data
-const int doorPin = 13;
-const int openButtonPin = 10;
-const int closeButtonPin = 6;
 Servo myServo;
 int pos = 0;
 int openButtonState = 0;
 int closeButtonState = 0;
 
+
+void lightOn() {
+  digitalWrite(LED_PIN, HIGH);   // turn the LED on (HIGH is the voltage level)             // wait for a second
+
+}
+void lightOff() {
+  digitalWrite(LED_PIN, LOW);    // turn the LED off by making the voltage LOW
+}
+
 void openDoor() {
-  digitalWrite(doorPin, HIGH);
+  lightOn();
+  digitalWrite(DOOR_PIN, HIGH);
   delay(1000);
-  digitalWrite(doorPin, LOW);
+  digitalWrite(DOOR_PIN, LOW);
+  lightOff();
 }
 
 void unlockDoor() {
+  lightOn();
   Serial.print("\nPosition: ");
   Serial.println(pos, DEC);
   if (pos == 0) {
@@ -32,10 +47,14 @@ void unlockDoor() {
     }
     delay(10);
     myServo.write(pos-10); 
+  } else {
+    delay(200);
   }
+  lightOff();
 }
 
 void lockDoor() {
+  lightOn();
   Serial.print("\nPosition: ");
   Serial.println(pos, DEC);
   if (pos == FINAL_POSITION) {
@@ -46,14 +65,18 @@ void lockDoor() {
     }
     delay(10);
     myServo.write(pos+10); 
-  } 
+  } else {
+    delay(200);
+  }
+  lightOff();
 }
 
 void setup() {
-  myServo.attach(8);
-  pinMode(doorPin, OUTPUT);
-  pinMode(openButtonPin, INPUT);
-  pinMode(closeButtonPin, INPUT);
+  myServo.attach(MOTOR_PIN);
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(DOOR_PIN, OUTPUT);
+  pinMode(OPEN_BUTTON_PIN, INPUT);
+  pinMode(CLOSE_BUTTON_PIN, INPUT);
   Serial.begin(9600);     // opens serial port, sets data rate to 9600 bps
 }
 
@@ -76,13 +99,13 @@ void loop() {
         }
         
     }
-    openButtonState = digitalRead(openButtonPin);
+    openButtonState = digitalRead(OPEN_BUTTON_PIN);
     if (openButtonState == HIGH) {
         Serial.print("\nopen button: ");
       unlockDoor(); 
     }
-    closeButtonState = digitalRead(closeButtonPin);
-    if (digitalRead(closeButtonPin) == HIGH) {
+    closeButtonState = digitalRead(CLOSE_BUTTON_PIN);
+    if (closeButtonState == HIGH) {
       Serial.print("\nclose button: ");
       lockDoor(); 
     }
