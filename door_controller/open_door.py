@@ -1,13 +1,13 @@
 import sys,serial
+import settings
 
-ARDUINO_LOCATION =  "/dev/ttyACM0"
 BAUD_RATE = 9600
-ser = serial.Serial(ARDUINO_LOCATION,BAUD_RATE)
+ser = serial.Serial(settings.ARDUINO_LOCATION, BAUD_RATE)
 
 def send(char):
-    print "sending" + char
+    print("sending" + char)
     try:
-        # char is an arbitrarily defined etter code sent to the arduino
+        # char is an arbitrarily defined letter code sent to the arduino
         ser.write(char)
     except:
         return "Unexpected error:", sys.exc_info()[0]

@@ -1,3 +1,6 @@
+# Arduino device location
+ARDUINO_LOCATION = ""
+
 # String of random characters
 SECRET_KEY = ""
 # Google APIs Client ID
