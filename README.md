@@ -20,6 +20,7 @@
   * This is all configured in Gruntfile.js
   * We're using SASS, and using compass to compile it to CSS.
   * We're using JST to keep our html templates/fragments organized and compiled into a singular JS object. It's directories and behaviors are also found in Gruntfile.js
+
 #Circuit
 ![](door_controller/Door/design.png?raw=true)
 ![](door_controller/Door/circuit.png?raw=true)
