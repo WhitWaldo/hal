@@ -49,28 +49,28 @@ def default():
 
     return render_template("index.html")
 
-@app.route("/door/open")
+@app.route("/door/open", methods=['POST', 'GET'])
 def open_doors():
     return buzz() + " and " + unlock()
 
-@app.route("/door/buzz")
+@app.route("/door/buzz", methods=['POST', 'GET'])
 def buzz():
     return open_door.buzz()
 
-@app.route("/door/unlock")
+@app.route("/door/unlock", methods=['POST', 'GET'])
 def unlock():
     Timer(10 * 60, lock).start()
     return open_door.unlock()
 
-@app.route("/door/lock")
+@app.route("/door/lock", methods=['POST', 'GET'])
 def lock():
     return open_door.lock()
 
-@app.route("/lights/<command>")
+@app.route("/lights/<command>", methods=['POST', 'GET'])
 def lights_change_function(command):
     return change_lights.change_function(command)
 
-@app.route("/lights/color/<color>")
+@app.route("/lights/color/<color>", methods=['POST', 'GET'])
 def lights_change_color(color):
     return change_lights.change_color(color)
 
@@ -103,12 +103,19 @@ def check_auth():
             request.endpoint != "authorized" and
             request.endpoint != "static"
         ):
-        access_token = session.get("access_token")
-        if access_token is None:
-            return redirect(url_for("login"))
-        authorized_emails = json.load(open("auth.json")).get("emails")
-        if session.get("email") not in authorized_emails:
-            return "Unauthorized user"
+        # Pebble request
+        if request.method == "POST" and request.form.get("pebble_token"):
+            authorized_pebble_tokens = json.load(open("auth.json")).get("pebbles")
+            if request.form.get("pebble_token") not in authorized_pebble_tokens:
+                return "Unauthorized user"
+        # Web request
+        else:
+            access_token = session.get("access_token")
+            if access_token is None:
+                return redirect(url_for("login"))
+            authorized_emails = json.load(open("auth.json")).get("emails")
+            if session.get("email") not in authorized_emails:
+                return "Unauthorized user"
 
 if __name__ == "__main__":
     if app.debug:
