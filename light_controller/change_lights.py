@@ -47,7 +47,7 @@ def change_function(command):
         elif command == "maxdim":
             for i in range(0,9):
                 send(hex_commands.get("dim"))
-    return "Success"
+    return "Lights " + command
 
 def change_color(color):
     if color == "white":
@@ -62,7 +62,7 @@ def change_color(color):
         else:
             return "Invalid color"
         send(hex_command.format(str(hex_color)))
-    return "Success"
+    return "Light color " + color
 
 def send(hex_command):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
