@@ -5,3 +5,40 @@
 body {
     background-color: $color1;
 }
+
+footer {
+   text-align: center;
+}
+
+.do-device-on {
+    background-color: green;
+}
+
+.do-device-off {
+    background-color: red;
+}
+
+.do-lights-on {
+  background-color: green;
+}
+
+.do-lights-off {
+  background-color: red;
+}
+
+.device-control-button {
+    height: 105px;
+    i {
+        padding-top: .8em;
+    }
+}
+
+$transitionSpeed: .15s;
+
+.device-controls {
+     @include transition-property(all);
+     @include transition-duration($transitionSpeed);
+     margin: 0;
+     padding: 0;
+     height: 210;
+}

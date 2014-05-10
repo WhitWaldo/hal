@@ -6,6 +6,7 @@ import json
 
 from door_controller import open_door
 from light_controller import change_lights
+from outlet_controller import outlets
 import settings
 
 app = Flask(__name__)
@@ -42,12 +43,24 @@ def default():
         unlock()
     elif request.args.get("door") == "lock":
         lock()
+    elif request.args.get("action") == "off":
+        off(request.args.get("device"))
+    elif request.args.get("action") == "on":
+        on(request.args.get("device"))
     elif request.args.get("lights") is not None:
         lights_change_function(request.args.get("lights"))
     elif request.args.get("color") is not None:
         lights_change_color(request.args.get("color"))
 
     return render_template("index.html")
+
+@app.route("/outlet/on/<device>", methods=['POST','GET'])
+def on(device):
+    return outlets.on(device)
+
+@app.route("/outlet/off/<device>", methods=['POST','GET'])
+def off(device):
+    return outlets.off(device)
 
 @app.route("/door/open", methods=['POST', 'GET'])
 def open_doors():

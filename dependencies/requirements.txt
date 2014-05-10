@@ -2,4 +2,5 @@ Flask==0.10.1
 Flask-OAuth==0.12
 oauth2==1.5.211
 pyserial==2.7
+requests
 

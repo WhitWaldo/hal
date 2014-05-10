@@ -10,3 +10,6 @@ node_modules/
 .idea/
 #Windows
 Thumbs.db
+#Stuff in hal_private
+auth.json
+settings.py
