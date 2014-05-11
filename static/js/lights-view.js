@@ -4,6 +4,8 @@ lights_view = Backbone.View.extend({
     events: {
         "click .do-lights-off"   : "lightsOff",
         "click .do-lights-on"    : "lightsOn",
+        "click .do-dan-room-off": "danRoomOff",
+        "click .do-dan-room-on" : "danRoomOn",
         "click .do-lights-color" : "lightsColor",
         "click .do-show-colors"  : "showColors",
         "click .do-door-page"    : "renderDoorPage",
@@ -46,6 +48,18 @@ lights_view = Backbone.View.extend({
 
     lightsOff: function() {
         this.model.do("lights=off");
+    },
+
+    danRoomOn: function() {
+        this.model.do("action=on&device=wemo&device_name=Dan Room");
+    },
+
+    danRoomOff: function() {
+        this.model.do("action=off&device=wemo&device_name=Dan Room");
+    },
+
+    danRoomGetState: function() {
+        this.model.do("action=get_state&device=wemo&device_name=Dan Room");
     },
 
     lightsColor: function(event) {

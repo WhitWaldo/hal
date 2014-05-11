@@ -7,6 +7,7 @@ import json
 from door_controller import open_door
 from light_controller import change_lights
 from outlet_controller import outlets
+from wemo_controller import wemo
 import settings
 
 app = Flask(__name__)
@@ -44,15 +45,48 @@ def default():
     elif request.args.get("door") == "lock":
         lock()
     elif request.args.get("action") == "off":
-        off(request.args.get("device"))
+        action = request.args.get("action")
+        device = request.args.get("device")
+        device_name = request.args.get("device_name")
+        if device == "wemo":
+            if device_name is not None:
+                wemo_off(device_name)
+        else:
+            off(request.args.get("device"))
     elif request.args.get("action") == "on":
-        on(request.args.get("device"))
+        action = request.args.get("action")
+        device = request.args.get("device")
+        device_name = request.args.get("device_name")
+        if device == "wemo":
+            if device_name is not None:
+                wemo_on(device_name)
+        else:
+            on(request.args.get("device"))
+    elif request.args.get("action") == "get_state":
+        action = request.args.get("action")
+        device = request.args.get("device")
+        device_name = request.args.get("device_name")
+        if device == "wemo":
+            if device_name is not None:
+                wemo_get_state(device_name)
     elif request.args.get("lights") is not None:
         lights_change_function(request.args.get("lights"))
     elif request.args.get("color") is not None:
         lights_change_color(request.args.get("color"))
 
     return render_template("index.html")
+
+@app.route("/wemo/on/<switch_name>", methods=['POST','GET'])
+def wemo_on(switch_name):
+    return wemo.on(switch_name)
+
+@app.route("/wemo/off/<switch_name>", methods=['POST','GET'])
+def wemo_off(switch_name):
+    return wemo.off(switch_name)
+
+@app.route("/wemo/get_state/<switch_name>", methods=['POST','GET'])
+def wemo_get_state(switch_name):
+    return wemo.get_state(switch_name)
 
 @app.route("/outlet/on/<device>", methods=['POST','GET'])
 def on(device):
