@@ -2,7 +2,6 @@ from ouimeaux.environment import Environment
 
 env = Environment()
 DISCOVER_DELAY = .5
-MAX_DISCOVER_DELAY = 3
 
 def on(switch_name, discover_delay = None):
     if discover_delay is None:
@@ -14,8 +13,6 @@ def on(switch_name, discover_delay = None):
             switch = env.get_switch(switch_name)
             switch.on()
             return str(switch.get_state()) 
-        elif discover_delay < MAX_DISCOVER_DELAY:
-            return on(switch_name, discover_delay+1)
         else:
             return "No Switches Found With Name: " + switch_name;
 
@@ -29,8 +26,6 @@ def off(switch_name, discover_delay = None):
             switch = env.get_switch(switch_name)
             switch.off()
             return str(switch.get_state()) 
-        elif discover_delay < MAX_DISCOVER_DELAY:
-            return off(switch_name, discover_delay+1)
         else:
             return "No Switches Found With Name: " + switch_name;
 
@@ -44,7 +39,5 @@ def get_state(switch_name, discover_delay = None):
             switch = env.get_switch(switch_name)
             switch.get_state()
             return str(switch.get_state()) 
-        elif discover_delay < MAX_DISCOVER_DELAY:
-            return get_state(switch_name, discover_delay+1)
         else:
             return "No Switches Found With Name: " + switch_name;
