@@ -1,6 +1,7 @@
 #OSX
 .DS_Store
 proj/__pycache__/*
+*.swp
 *.pyc
 #SASS
 .sass-cache/
@@ -8,6 +9,8 @@ proj/__pycache__/*
 node_modules/
 #PyCharm
 .idea/
+#Generated Stuff
+static/templates
 #Windows
 Thumbs.db
 #Stuff in hal_private
