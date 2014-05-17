@@ -145,25 +145,26 @@ def authorized(resp):
 
 @app.before_request
 def check_auth():
-    if settings.ENV == "prod":
-        if (
-                request.endpoint != "login" and
-                request.endpoint != "authorized" and
-                request.endpoint != "static"
-            ):
-            # Pebble request
-            if request.method == "POST" and request.form.get("pebble_token"):
-                authorized_pebble_tokens = json.load(open("auth.json")).get("pebbles")
-                if request.form.get("pebble_token") not in authorized_pebble_tokens:
-                    return "Unauthorized user"
-            # Web request
-            else:
-                access_token = session.get("access_token")
-                if access_token is None:
-                    return redirect(url_for("login"))
-                authorized_emails = json.load(open("auth.json")).get("emails")
-                if session.get("email") not in authorized_emails:
-                    return "Unauthorized user"
+    if request.args.get("key") != settings.KEY:
+        if settings.ENV == "prod":
+            if (
+                    request.endpoint != "login" and
+                    request.endpoint != "authorized" and
+                    request.endpoint != "static"
+                ):
+                # Pebble request
+                if request.method == "POST" and request.form.get("pebble_token"):
+                    authorized_pebble_tokens = json.load(open("auth.json")).get("pebbles")
+                    if request.form.get("pebble_token") not in authorized_pebble_tokens:
+                        return "Unauthorized user"
+                # Web request
+                else:
+                    access_token = session.get("access_token")
+                    if access_token is None:
+                        return redirect(url_for("login"))
+                    authorized_emails = json.load(open("auth.json")).get("emails")
+                    if session.get("email") not in authorized_emails:
+                        return "Unauthorized user"
 
 if __name__ == "__main__":
     if app.debug:
