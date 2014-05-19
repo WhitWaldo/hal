@@ -78,11 +78,13 @@ def default():
 
 @app.route("/wemo/on/<switch_name>", methods=['POST','GET'])
 def wemo_on(switch_name):
-    return wemo.on(switch_name)
+    return True
+    #return wemo.on(switch_name)
 
 @app.route("/wemo/off/<switch_name>", methods=['POST','GET'])
 def wemo_off(switch_name):
-    return wemo.off(switch_name)
+    return True
+    #return wemo.off(switch_name)
 
 @app.route("/wemo/get_state/<switch_name>", methods=['POST','GET'])
 def wemo_get_state(switch_name):
