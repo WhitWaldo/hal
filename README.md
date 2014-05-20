@@ -22,9 +22,11 @@
   * We're using JST to keep our html templates/fragments organized and compiled into a singular JS object. It's directories and behaviors are also found in Gruntfile.js
 
 #Circuit
+##Door Controller
 ![](door_controller/Door/design.png?raw=true)
 ![](door_controller/Door/circuit.png?raw=true)
-
+##Outlet Controller
+![](outlet_controller/outlet-circuit.jpg?raw=true)
 # Site
 ![](images/preview_1.png?raw=true)
 ![](images/preview_2.png?raw=true)
