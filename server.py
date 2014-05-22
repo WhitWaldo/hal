@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect, request, url_for, session
 from flask_oauth import OAuth
 from urllib2 import Request, urlopen, URLError
-from threading import Timer
 import json
 
 from door_controller import open_door
@@ -108,7 +107,6 @@ def buzz():
 
 @app.route("/door/unlock", methods=['POST', 'GET'])
 def unlock():
-    Timer(10 * 60, lock).start()
     return open_door.unlock()
 
 @app.route("/door/lock", methods=['POST', 'GET'])
