@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Users{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+{% block js %}
+  {{ super() }}
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div id="main row">
+      <form method="post">
+        <textarea name="users" class="col-md-12 row color-row">
+          {% for user in users %}{{ user }},{% endfor %}
+        </textarea>
+        <input type="submit" value="Save"/>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

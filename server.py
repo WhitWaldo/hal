@@ -121,6 +121,21 @@ def lights_change_function(command):
 def lights_change_color(color):
     return change_lights.change_color(color)
 
+@app.route("/users", methods=['POST','GET'])
+def users():
+    with open("auth.json", "r+w") as auth_file:
+        auth = json.load(auth_file)
+        if request.method == 'POST':
+            users = request.form['users']
+            users = users.strip().rstrip(',').split(',')
+            auth["emails"] = users
+            auth_file.seek(0)
+            auth_file.truncate()
+            json.dump(auth, auth_file,
+                    indent = 4, separators=(',', ': '), encoding='utf-8')
+        authorized_emails = auth.get("emails")
+    return render_template("users.html", users=authorized_emails)
+
 @app.route("/login")
 def login():
     callback = url_for("authorized", _external=True)
