@@ -126,9 +126,12 @@ def users():
     with open("auth.json", "r+w") as auth_file:
         auth = json.load(auth_file)
         if request.method == 'POST':
-            users = request.form['users']
-            users = users.strip().rstrip(',').split(',')
-            auth["emails"] = users
+            emails = auth.get("emails")
+            if request.form.get("adduser"):
+                emails.append(request.form.get("adduser"))
+            elif request.form.get("deleteuser"):
+                emails.remove(request.form.get("deleteuser"))
+            auth["emails"] = emails
             auth_file.seek(0)
             auth_file.truncate()
             json.dump(auth, auth_file,

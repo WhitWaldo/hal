@@ -10,12 +10,18 @@
 
 {% block body %}
   <div class="container-fluid">
-    <div id="main row">
+    <div class="main row col-md-12 color-row">
       <form method="post">
-        <textarea name="users" class="col-md-12 row color-row">
-          {% for user in users %}{{ user }},{% endfor %}
-        </textarea>
-        <input type="submit" value="Save"/>
+        <ul>
+          {% for user in users %}
+          <li>
+            {{ user }}
+            <button type="submit" name="deleteuser" value="{{ user }}">Remove</button>
+          </li>
+          {% endfor %}
+        </ul>
+        <input type="text" name="adduser" placeholder="New User">
+        <input type="submit" value="Add"/>
       </form>
     </div>
   </div>
