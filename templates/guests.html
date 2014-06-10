@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Guests{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+{% block js %}
+  {{ super() }}
+{% endblock %}
+
+{% block body %}
+  <div class="container-fluid">
+    <div class="main row col-md-12 color-row">
+      <form method="post">
+        <ul>
+          {% for key in guests.keys() %}
+          <li>
+          <a href="{{ url_for("default") }}?guestkey={{ key }}">{{ guests[key] }}</a>
+            <button type="submit" name="deletekey" value="{{ key }}">Remove</button>
+          </li>
+          {% endfor %}
+        </ul>
+        <input type="date" name="expdate" />
+        <input type="submit" value="Add"/>
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

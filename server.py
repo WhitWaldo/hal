@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, request, url_for, session
 from flask_oauth import OAuth
 from urllib2 import Request, urlopen, URLError
-import json
+import json, string, random, datetime
 
 from door_controller import open_door
 from light_controller import change_lights
@@ -138,6 +138,25 @@ def users():
                     indent = 4, separators=(',', ': '), encoding='utf-8')
         authorized_emails = auth.get("emails")
     return render_template("users.html", users=authorized_emails)
+
+@app.route("/guests", methods=['POST', 'GET'])
+def guests():
+    with open("auth.json", "r+w") as auth_file:
+        auth = json.load(auth_file)
+        guests = auth.get("guests")
+        if request.method == 'POST':
+            if request.form.get("expdate"):
+                key = ''.join(random.choice(string.letters + string.digits) for i in range(16))
+                exp_date = request.form.get("expdate")
+                guests[key] = exp_date
+            elif request.form.get("deletekey"):
+                guests.pop(request.form.get("deletekey"), None)
+            auth["guests"] = guests
+            auth_file.seek(0)
+            auth_file.truncate()
+            json.dump(auth, auth_file,
+                    indent = 4, separators=(',', ': '), encoding='utf-8')
+    return render_template("guests.html", guests=guests)
 
 @app.route("/login")
 def login():
