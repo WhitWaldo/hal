@@ -184,6 +184,14 @@ def authorized(resp):
 def check_auth():
     if request.args.get("key") == settings.KEY:
         return
+    elif request.args.get("guestkey"):
+        guestkey = request.args.get("guestkey")
+        authorized_guests = json.load(open("auth.json")).get("guests")
+        if guestkey not in authorized_guests:
+            return "Invalid key"
+        exp_date = datetime.datetime.strptime(authorized_guests.get(guestkey), "%Y-%m-%d")
+        if datetime.datetime.now() > exp_date:
+            return "Expired key"
     elif settings.ENV == "dev":
         return
     elif (
